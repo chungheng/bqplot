@@ -1612,7 +1612,7 @@ class Graph(Mark):
     link_distance: float (default: 100)
         link distance in pixels between nodes. Will be ignored when x and y
         data attributes are set
-    link_type: {'arc', 'line', 'slant_line'} (default: 'arc')
+    link_type: {'arc', 'line', 'slant_line', 'path'} (default: 'arc')
         Enum representing link type
     directed: bool (default: True)
         directed or undirected graph
@@ -1639,7 +1639,7 @@ class Graph(Mark):
     link_matrix = Array([]).tag(sync=True, rtype='Number',
                                 **array_serialization)\
         .valid(array_squeeze, array_dimension_bounds(1, 2))
-    link_type = Enum(['arc', 'line', 'slant_line'],
+    link_type = Enum(['arc', 'line', 'slant_line', 'path'],
                      default_value='arc').tag(sync=True)
     directed = Bool(True).tag(sync=True)
     colors = List(trait=Color(default_value=None, allow_none=True),

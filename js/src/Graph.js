@@ -589,6 +589,10 @@ var Graph = mark.Mark.extend({
                "L" +  d.target.x + "," + d.target.y;
     },
 
+    link_path: function(d) {
+        return;
+    },
+
     tick: function() {
         var link_type = this.model.get("link_type");
 
@@ -602,7 +606,7 @@ var Graph = mark.Mark.extend({
                        (-d.shape_attrs.height/2) + ")";
             });
 
-        var link_path_func = this.link_arc;
+        var link_path_func = this.link_path;
         switch(link_type) {
             case 'arc':
                 link_path_func = this.link_arc;
@@ -612,6 +616,9 @@ var Graph = mark.Mark.extend({
                 break;
             case 'slant_line':
                 link_path_func = this.link_slant_line;
+                break;
+            case 'path':
+                link_path_func = this.link_path;
                 break;
             default:
                 link_path_func = this.link_arc;
